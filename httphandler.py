@@ -18,7 +18,6 @@ class httphandler(BaseHTTPRequestHandler):
             read = conn.cursor().execute("SELECT * FROM process").fetchall()
         else:
             read = conn.cursor().execute("SELECT * FROM process WHERE coin='"+path+"'").fetchall()
-        print(read)
         for item in read:
             self.wfile.write("<tr><td>"+str(item[0])+"</td><td>"+str(item[1])+"</td><td>"+str(item[2])+"</td><td>"+str(item[3])+"</td><td>"+str(item[4])+"</td></tr>")
         self.wfile.write("</tbody></table></body></html>")
