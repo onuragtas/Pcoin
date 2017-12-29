@@ -4,8 +4,7 @@ class ticker:
     api_url = "https://api.coinmarketcap.com/v1/ticker/"
     coin = []
     count = 0
-    def __init__(self):
-        print("start")
+    coins = {}
 
     def getData(self):
         self.count = 0
@@ -18,3 +17,6 @@ class ticker:
             self.count = self.count + 1
         
         return self.coin
+
+    def setData(self, coins):
+        self.coins = coins
