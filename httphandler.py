@@ -13,11 +13,11 @@ class httphandler(BaseHTTPRequestHandler):
         c = conn.cursor()
         path = self.path.replace("/","")
         self._set_headers()
-        self.wfile.write("<html><head><meta http-equiv=\"refresh\" content=\"30\"></head><body><table><thead><th>#</th><th>Process</th><th>Coin</th><th>Value</th><th>Amount</th></thead><tbody>")
         if path == "":
             read = conn.cursor().execute("SELECT * FROM process").fetchall()
         else:
             read = conn.cursor().execute("SELECT * FROM process WHERE coin='"+path+"'").fetchall()
+        self.wfile.write("<html><head><title>"+len(read)+"</title><meta http-equiv=\"refresh\" content=\"30\"></head><body><table><thead><th>#</th><th>Process</th><th>Coin</th><th>Value</th><th>Amount</th></thead><tbody>")
         for item in read:
             self.wfile.write("<tr><td>"+str(item[0])+"</td><td>"+str(item[1])+"</td><td>"+str(item[2])+"</td><td>"+str(item[3])+"</td><td>"+str(item[4])+"</td></tr>")
         self.wfile.write("</tbody></table></body></html>")
