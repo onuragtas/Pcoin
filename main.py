@@ -4,7 +4,7 @@ import time
 import os.path
 
 
-logpath = "/home/onuragtas/workspace/PCoin/log.txt"
+logpath = "pcoinlog"
 amount = 300
 ticker = ticker()
 coins = {}
