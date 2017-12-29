@@ -3,7 +3,7 @@ import SocketServer
 from httphandler import *
 
 class httpserver:
-    port = 8080
+    port = 8888
     data = {}
     def __init__(self):
         server_address = ('', self.port)
