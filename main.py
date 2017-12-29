@@ -41,8 +41,8 @@ amount TEXT NOT NULL
             self.max[coin[0]] = {}
             self.min[coin[0]] = {}
 
-            self.max[coin[0]]["value"] = -1
-            self.min[coin[0]]["value"] = -1
+            self.max[coin[0]]["value"] = 0
+            self.min[coin[0]]["value"] = 0
 
             self.max[coin[0]]["count"] = 0
             self.min[coin[0]]["count"] = 0
