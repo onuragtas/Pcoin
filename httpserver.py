@@ -8,5 +8,5 @@ class httpserver:
     def __init__(self):
         server_address = ('', self.port)
         httpd = HTTPServer(server_address, httphandler)
-        print 'Starting httpd...'
+        print 'Starting httpd... '+str(server_address)
         httpd.serve_forever()
