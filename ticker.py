@@ -1,3 +1,4 @@
+#-*- coding: utf-8 -*-
 import requests
 import json
 class ticker:
@@ -9,14 +10,17 @@ class ticker:
     def getData(self):
         self.count = 0
         self.coin = []
-        resp = requests.get(self.api_url)
-        json = resp.json()
-        self.count = 0
-        for coindetail in json:
-            self.coin.append([coindetail['id'],coindetail['price_usd']])
-            self.count = self.count + 1
+        try:
+            resp = requests.get(self.api_url)
+            json = resp.json()
+            self.count = 0
+            for coindetail in json:
+                self.coin.append([coindetail['id'],coindetail['price_usd']])
+                self.count = self.count + 1
+                return self.coin
+        except:
+            print "api hatası"
         
-        return self.coin
 
     def setData(self, coins):
         self.coins = coins
