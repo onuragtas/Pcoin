@@ -13,7 +13,6 @@ class httphandler(BaseHTTPRequestHandler):
         conn = sqlite3.connect('pcoin.db')
         c = conn.cursor()
         path = self.path.replace("/","")
-        print "path:",path
         self._set_headers()
         if path == " ":
             read = conn.cursor().execute("SELECT * FROM process").fetchall()
