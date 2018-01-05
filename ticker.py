@@ -17,7 +17,7 @@ class ticker:
             for coindetail in json:
                 self.coin.append([coindetail['id'],coindetail['price_usd']])
                 self.count = self.count + 1
-                return self.coin
+            return self.coin
         except:
             print "api hatası"
         
