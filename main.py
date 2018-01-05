@@ -63,6 +63,7 @@ amount TEXT NOT NULL
                         print(coin[0], "eklenme hatası")
             except:
                 print "nullpointer"
+                
             for coin in self.coins:
                 t = 0
                 if coin in ("litecoin","bitcoin","dogecoin","iota","ripple"):
