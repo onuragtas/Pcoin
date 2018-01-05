@@ -119,7 +119,7 @@ value TEXT NOT NULL
             c.close()
             conn.close()
             log.close()
-            time.sleep(5)
+            time.sleep(50)
 
 
 main()
