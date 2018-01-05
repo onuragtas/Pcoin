@@ -55,11 +55,14 @@ amount TEXT NOT NULL
             log = open(self.logpath,"a")
             datas = self.ticker.getData()
             
-            for coin in datas:
-                try:
-                    self.coins[coin[0]].append(float(coin[1]))
-                except Exception:
-                    print(coin[0], "eklenme hatası")
+            try:
+                for coin in datas:
+                    try:
+                        self.coins[coin[0]].append(float(coin[1]))
+                    except Exception:
+                        print(coin[0], "eklenme hatası")
+            except:
+                print "nullpointer"
             for coin in self.coins:
                 t = 0
                 if coin in ("litecoin","bitcoin","dogecoin","iota","ripple"):
