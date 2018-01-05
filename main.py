@@ -66,35 +66,35 @@ amount TEXT NOT NULL
                 
             for coin in self.coins:
                 t = 0
-                if coin in ("litecoin","bitcoin","dogecoin","iota","ripple"):
-                    
+                #if coin in ("litecoin","bitcoin","dogecoin","iota","ripple"):
+                
 
-                    for value in self.coins[coin]:
-                        t = t + value
-                    ort = t/len(self.coins[coin])
-                    
-                    try:
-                        #print coin, ort, value, len(coins[coin]),value-coins[coin][-2], maxfark
-                        if value-self.coins[coin][-2] > self.max[coin]["value"]:
-                            self.max[coin]["value"] = value-self.coins[coin][-2]
-                            self.max[coin]["count"] = self.max[coin]["count"]+1
-                            if self.max[coin]["count"] > 5:
-                                print coin, ort, value, len(self.coins[coin]),"sat",value-self.coins[coin][-2], self.max[coin]["value"]
-                                log.write("sat\t\t\t\t" + coin+"\t\t\t\t"+str(value)+"\t\t\t"+str(self.amount)+"\n")
-                                c.execute("INSERT INTO process (process, coin,value,amount)VALUES('sat','"+str(coin)+"', '"+str(value)+"','"+str(self.amount)+"')")
-                                self.max[coin]["count"] = 0
-                        elif value-self.coins[coin][-2] == max:
-                            a=1#coin, ort, value, len(coins[coin]),"sabit",value-coins[coin][-2], maxfark
-                        elif value-self.coins[coin][-2] < self.min[coin]["value"]:
-                            self.min[coin]["value"] = value-self.coins[coin][-2]
-                            self.min[coin]["count"] = self.min[coin]["count"]+1
-                            if self.min[coin]["count"] > 5:
-                                print coin, ort, value, len(self.coins[coin]),"al",value-self.coins[coin][-2], self.min[coin]["value"]
-                                log.write("sat\t\t\t\t" + coin+"\t\t\t\t"+str(value)+"\t\t\t"+str(self.amount)+"\n")
-                                c.execute("INSERT INTO process (process, coin,value,amount)VALUES('al','"+str(coin)+"', '"+str(value)+"','"+str(self.amount)+"')")
-                                self.min[coin]["count"] = 0
-                    except IndexError:
-                        print "2den az değer var"
+                for value in self.coins[coin]:
+                    t = t + value
+                ort = t/len(self.coins[coin])
+                
+                try:
+                    #print coin, ort, value, len(coins[coin]),value-coins[coin][-2], maxfark
+                    if value-self.coins[coin][-2] > self.max[coin]["value"]:
+                        self.max[coin]["value"] = value-self.coins[coin][-2]
+                        self.max[coin]["count"] = self.max[coin]["count"]+1
+                        if self.max[coin]["count"] > 5:
+                            print coin, ort, value, len(self.coins[coin]),"sat",value-self.coins[coin][-2], self.max[coin]["value"]
+                            log.write("sat\t\t\t\t" + coin+"\t\t\t\t"+str(value)+"\t\t\t"+str(self.amount)+"\n")
+                            c.execute("INSERT INTO process (process, coin,value,amount)VALUES('sat','"+str(coin)+"', '"+str(value)+"','"+str(self.amount)+"')")
+                            self.max[coin]["count"] = 0
+                    elif value-self.coins[coin][-2] == max:
+                        a=1#coin, ort, value, len(coins[coin]),"sabit",value-coins[coin][-2], maxfark
+                    elif value-self.coins[coin][-2] < self.min[coin]["value"]:
+                        self.min[coin]["value"] = value-self.coins[coin][-2]
+                        self.min[coin]["count"] = self.min[coin]["count"]+1
+                        if self.min[coin]["count"] > 5:
+                            print coin, ort, value, len(self.coins[coin]),"al",value-self.coins[coin][-2], self.min[coin]["value"]
+                            log.write("sat\t\t\t\t" + coin+"\t\t\t\t"+str(value)+"\t\t\t"+str(self.amount)+"\n")
+                            c.execute("INSERT INTO process (process, coin,value,amount)VALUES('al','"+str(coin)+"', '"+str(value)+"','"+str(self.amount)+"')")
+                            self.min[coin]["count"] = 0
+                except IndexError:
+                    print "2den az değer var"
             conn.commit()
             c.close()
             conn.close()
